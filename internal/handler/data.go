@@ -2,14 +2,11 @@ package handler
 
 import (
 	"encoding/json"
+	"github.com/rtzgod/simple-dt/internal/entity"
 	"net/http"
 )
 
-type Data struct {
-	Value string `json:"value"`
-}
-
-var data Data
+var data entity.Data
 
 func (h *Handler) SetData(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&data)

@@ -9,14 +9,19 @@ import (
 )
 
 type Config struct {
-	Env  string     `yaml:"env" env-default:"local"`
-	HTTP HTTPConfig `yaml:"http"`
+	Env    string       `yaml:"env" env-default:"local"`
+	HTTP   HTTPConfig   `yaml:"http"`
+	Client ClientConfig `yaml:"client"`
 }
 
 type HTTPConfig struct {
 	Port         string        `yaml:"port"`
 	ReadTimeout  time.Duration `yaml:"read-timeout"`
 	WriteTimeout time.Duration `yaml:"write-timeout"`
+}
+
+type ClientConfig struct {
+	Url string `yaml:"url"`
 }
 
 func MustLoad() *Config {
